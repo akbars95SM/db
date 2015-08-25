@@ -1,0 +1,111 @@
+bd-tutorials
+
+USER(1)
+	userId
+	userFirstname
+	userLastname
+	userMiddlename
+	userDateOfBirth
+	userGender
+	userContactPhone
+		PK_userId
+
+ACCOUNT(2)
+	accountId
+	userId
+	accountLogin
+	accountPassword
+		PK_accountId
+		FK_ACCOUNT_userId to USER.userId
+	
+EMAIL(3)
+	emailId
+	userId
+	emailMessage
+		PK_emailId
+		FK_EMAIL_userId to USER.userId
+	
+COUNTRY(4)
+	countryId
+	countryName
+		PK_countryId
+
+CITY(5)
+	cityId
+	countryId
+	cityName
+		PK_cityId
+		FK_CITY_countryId to COUNTRY.countryId
+
+	
+ADDRESS(6)
+	addressId
+	userId
+	addressCityId
+	addressStreet
+	addressHouseNumber
+	addressFlatNumber
+		PK_addressId
+		FK_ADDRESS_userId to USER.userId
+		FK_ADDRESS_addressCityId to CITY.cityId
+	
+	
+CATEGORY(7)
+	categoryId
+	categoryName
+		PK_categoryId
+	
+	
+SUB_CATEGORY(8)
+	subCategoryId
+	categoryId
+	subCategoryName
+		PK_subCategoryId
+		FK_SUB_CATEGORY_categoryId to CATEGORY.categoryId
+	
+	
+ARTICLE(9)
+	articleId
+	articleName
+	articleContent
+	articleDescription
+	articleSubCategoryId
+	articleCreatedDate
+	articleLastModifiedDate
+	articleAuthorUserId
+		PK_articleId
+		FK_ARTICLE_articleSubCategoryId to SUB_CATEGORY.subCategoryId
+		FK_ARTICLE_articleAuthorUserId to USER.userId
+	
+	
+TAG(10)
+	tagId
+	tagName
+		PK_tagId
+	
+	
+ARTICLE_TAG(11)
+	articleId
+	tagId
+		FK_ARTICLE_TAG_articleId to ARTICLE.articleId
+		FK_ARTICLE_TAG_tagId to TAG.tagId
+	
+	
+RELATED_ARTICLES(12)
+	articleId
+	relatedArticleId
+		FK_RELATED_ARTICLES_articleId to ARTICLE.articleId
+		FK_RELATED_ARTICLES_relatedArticleId to ARTICLE.articleId
+	
+	
+COMMENT(13)
+	commentId
+	commentPositive
+	commentNegative
+	commentMessage
+	userId
+	commentCreatedDate
+	articleId
+		PK_commentId
+		FK_COMMENT_userId to USER.userId
+		FK_COMMENT_articleId to ARTICLE.articleId
