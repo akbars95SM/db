@@ -1,0 +1,21 @@
+country(1, Russia)
+city(1, 1, Moscow)
+leagua(1, 1, Premier Leagua)
+position(1, goalkeeper)
+season(1, 2015/2016)
+football_club(1, Spartak Moscow, 1, 1)
+player(1, Artem, Rebrov, ,m, 24.05.1984, 1, 1, 31)
+
+
+
+
+
+
+
+
+
+
+
+
+
+spartak - cska, 1 tur, 28.02.2015, russian premier leagua, 

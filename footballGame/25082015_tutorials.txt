@@ -1,0 +1,121 @@
+bd-FOOTBALL_GAME
+
+COUNTRY(1)
+	countryId
+	countryName
+	countryFlag
+		PK_countryId
+
+CITY(2)
+	cityId
+	cityName
+	countryId
+		PK_cityId
+		FK_CITY_userId to COUNTRY.countryId
+		
+LEAGUE(3)
+	leagueId
+	countryId
+	leagueName
+	leagueLogo
+		PK_leagueId
+		FK_LEAGUE_userId to COUNTRY.countryId
+		
+POSITION(4)
+	positionId
+	position
+		PK_positionId
+		
+SEASON(5)
+	seasonId
+	seasonName
+		PK_seasonId
+	
+	
+FOOTBALL_CLUB(6)
+	footballClubId
+	footballClubName
+	footballClubCityId
+	footballClubLeaguaId
+	footballClubLogo
+		PK_footballClubId
+		FK_FOOTBALL_CLUB_footballClubCityId to CITY.countryId
+		
+PLAYER(7)
+	playerId
+	playerFirstName
+	playerLastName
+	playerMiddleName
+	playerGender
+	playerDayOfBirth
+	playerPostionId
+	playerCountryId
+	playerNumber
+		PK_playerId
+		FK_PLAYER_playerPostionId to POSITION.positionId
+		FK_PLAYER_playerCountryId to COUNTRY.countryId
+		
+		
+FOOTBALL_CLUB_SEASON_LEAGUA(8)
+	footballClubSeasonLeaguaId
+	seasonId
+	footballClubId
+	leagueId
+		PK_footballClubSeasonLeaguaId
+		FK_FOOTBALL_CLUB_SEASON_LEAGUA_seasonId to SEASON.seasonId
+		FK_FOOTBALL_CLUB_SEASON_LEAGUA_seasonId to FOOTBALL_CLUB.footballClubId
+		FK_FOOTBALL_CLUB_SEASON_LEAGUA_seasonId to LEAGUE.leagueId
+		
+PLAYER_CLUB_SEASON(9)
+	playerClubSeasonId
+	seasonId
+	footballClubId
+	playerId
+		PK_playerClubSeasonId
+		FK_PLAYER_CLUB_SEASON_seasonId to SEASON.seasonId
+		FK_PLAYER_CLUB_SEASON_footballClubId to FOOTBALL_CLUB.footballClubId
+		FK_PLAYER_CLUB_SEASON_playerId to PLAYER.playerId
+		
+		
+ROUND(10)
+	roundId
+	leagueId
+	roundName
+		PK_roundId
+		FK_ROUND_leagueId to LEAGUE.leagueId
+		
+
+GAMES_CALENDAR(11)
+	gameId
+	clubHostId
+	clubGuestId
+	dateOfMatch
+		PK_gameId
+		FK_GAMES_CALENDAR_clubHostId to FOOTBALL_CLUB.footballClubId
+		FK_GAMES_CALENDAR_clubGuestId to FOOTBALL_CLUB.footballClubId
+	
+RESULTS(12)
+	gameId
+	playerClubId(host/guest)
+	playCountOfMinutes
+	countGoals
+	countGoalPass
+	countYellowCard
+	countRedCard
+	countMissedGoals
+	
+		
+		
+CLUB_STAT(?)
+	clubStatId
+	footballClubSeasonLeaguaId
+	place
+	countOfMatches
+	countOfWins
+	countOfDefeats
+	countOfDraw
+	countOfGoals
+	countOfGoalsConceded
+		PK_clubStatId
+		FK_CLUB_STAT_footballClubSeasonLeaguaId to FOOTBALL_CLUB_SEASON_LEAGUA.footballClubSeasonLeaguaId
+		
