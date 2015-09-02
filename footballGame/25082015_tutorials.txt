@@ -40,6 +40,7 @@ FOOTBALL_CLUB(6)
 	footballClubLogo
 		PK_footballClubId
 		FK_FOOTBALL_CLUB_footballClubCityId to CITY.countryId
+		FK_FOOTBALL_CLUB_footballClubLeaguaId to LEAGUE.leagueId
 		
 PLAYER(7)
 	playerId
@@ -50,27 +51,32 @@ PLAYER(7)
 	playerDayOfBirth
 	playerPostionId
 	playerCountryId
-	playerNumber
 		PK_playerId
 		FK_PLAYER_playerPostionId to POSITION.positionId
 		FK_PLAYER_playerCountryId to COUNTRY.countryId
 		
-		
-FOOTBALL_CLUB_SEASON_LEAGUA(8)
-	footballClubSeasonLeaguaId
-	seasonId
+
+FOOTBALL_CLUB_LEAGUA ?
+	footballClubLeaguaId
 	footballClubId
 	leagueId
-		PK_footballClubSeasonLeaguaId
-		FK_FOOTBALL_CLUB_SEASON_LEAGUA_seasonId to SEASON.seasonId
-		FK_FOOTBALL_CLUB_SEASON_LEAGUA_seasonId to FOOTBALL_CLUB.footballClubId
-		FK_FOOTBALL_CLUB_SEASON_LEAGUA_seasonId to LEAGUE.leagueId
+		PK_footballClubLeaguaId
+		FK_FOOTBALL_CLUB_LEAGUA_footballClubId to FOOTBALL_CLUB.footballClubId
+		FK_FOOTBALL_CLUB_LEAGUA_leagueId to LEAGUE.leagueId
 		
-PLAYER_CLUB_SEASON(9)
+FOOTBALL_CLUB_LEAGUA_SEASON(8)?
+	footballClubLeaguaId
+	seasonId
+		FK_FOOTBALL_CLUB_LEAGUA_SEASON_footballClubLeaguaId to FOOTBALL_CLUB_LEAGUA.footballClubLeaguaId
+		FK_FOOTBALL_CLUB_LEAGUA_SEASON_seasonId to SEASON.seasonId
+		
+PLAYER_CLUB_SEASON(9)?
 	playerClubSeasonId
 	seasonId
 	footballClubId
 	playerId
+	playerNumber
+	currentClub(0/1)
 		PK_playerClubSeasonId
 		FK_PLAYER_CLUB_SEASON_seasonId to SEASON.seasonId
 		FK_PLAYER_CLUB_SEASON_footballClubId to FOOTBALL_CLUB.footballClubId
@@ -103,8 +109,8 @@ RESULTS(12)
 	countYellowCard
 	countRedCard
 	countMissedGoals
-	
-		
+		FK_RESULTS_gameId to GAMES_CALENDAR.gameId
+		FK_RESULTS_playerClubId to PLAYER.playerId
 		
 CLUB_STAT(?)
 	clubStatId
