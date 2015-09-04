@@ -1,0 +1,14 @@
+FOOTBALL_GAME
+tables/t_country.sql
+tables/t_city.sql
+tables/t_league.sql
+tables/t_position.sql
+tables/t_season.sql
+tables/t_football_club.sql
+tables/t_player.sql
+tables/t_football_club_leagua.sql
+
+
+tables/t_round.sql
+tables/t_games_calendar.sql
+tables/t_results.sql

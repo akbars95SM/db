@@ -56,7 +56,7 @@ PLAYER(7)
 		FK_PLAYER_playerCountryId to COUNTRY.countryId
 		
 
-FOOTBALL_CLUB_LEAGUA ?
+FOOTBALL_CLUB_LEAGUA(8)
 	footballClubLeaguaId
 	footballClubId
 	leagueId
@@ -64,13 +64,13 @@ FOOTBALL_CLUB_LEAGUA ?
 		FK_FOOTBALL_CLUB_LEAGUA_footballClubId to FOOTBALL_CLUB.footballClubId
 		FK_FOOTBALL_CLUB_LEAGUA_leagueId to LEAGUE.leagueId
 		
-FOOTBALL_CLUB_LEAGUA_SEASON(8)?
+FOOTBALL_CLUB_LEAGUA_SEASON(9)
 	footballClubLeaguaId
 	seasonId
 		FK_FOOTBALL_CLUB_LEAGUA_SEASON_footballClubLeaguaId to FOOTBALL_CLUB_LEAGUA.footballClubLeaguaId
 		FK_FOOTBALL_CLUB_LEAGUA_SEASON_seasonId to SEASON.seasonId
 		
-PLAYER_CLUB_SEASON(9)?
+PLAYER_CLUB_SEASON(10)
 	playerClubSeasonId
 	seasonId
 	footballClubId
@@ -83,7 +83,7 @@ PLAYER_CLUB_SEASON(9)?
 		FK_PLAYER_CLUB_SEASON_playerId to PLAYER.playerId
 		
 		
-ROUND(10)
+ROUND(11)
 	roundId
 	leagueId
 	roundName
@@ -91,7 +91,7 @@ ROUND(10)
 		FK_ROUND_leagueId to LEAGUE.leagueId
 		
 
-GAMES_CALENDAR(11)
+GAMES_CALENDAR(12)
 	gameId
 	clubHostId
 	clubGuestId
@@ -100,7 +100,7 @@ GAMES_CALENDAR(11)
 		FK_GAMES_CALENDAR_clubHostId to FOOTBALL_CLUB.footballClubId
 		FK_GAMES_CALENDAR_clubGuestId to FOOTBALL_CLUB.footballClubId
 	
-RESULTS(12)
+RESULTS(13)
 	gameId
 	playerClubId(host/guest)
 	playCountOfMinutes
