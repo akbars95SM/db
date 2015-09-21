@@ -1,0 +1,2 @@
+DROP TRIGGER IF EXISTS PersonInsertAfter;
+DROP TRIGGER IF EXISTS PersonInsertBefore;
